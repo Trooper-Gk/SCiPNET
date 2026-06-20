@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation Code of Ethics - CONFIDENTIAL</title>
+<style>
+    :root {
+        --primary-color: #1a1a1a;
+        --secondary-color: #2d2d2d;
+        --accent-color: #b01c1c;
+        --text-color: #ffffff;
+        --border-color: #444444;
+        --redacted-dark-red: #8b0000;
+        --redacted-crimson: #dc143c;
+        --redacted-purple: #800080;
+        --redacted-dark-green: #006400;
+    }
+
+    body {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .warning-bar {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .clearance-info {
+        background-color: #003300;
+        color: #00ff00;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #00ff00;
+        font-family: monospace;
+        text-align: center;
+    }
+
+    .section {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        margin-bottom: 30px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+    }
+
+    h1, h2, h3, h4 {
+        color: var(--accent-color);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .data-expunged {
+        background-color: #000;
+        padding: 2px 5px;
+    }
+
+    .classification {
+        margin: 10px 0;
+        padding: 10px;
+        border-left: 4px solid var(--accent-color);
+    }
+
+    .build-up {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: var(--secondary-color);
+    }
+    
+    .classified {
+        background-color: #000;
+        color: #000;
+        padding: 2px 4px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    
+    .redacted-black {
+        background-color: #000;
+        color: #000;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .redacted-red {
+        background-color: var(--redacted-crimson);
+        color: var(--redacted-crimson);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .redacted-purple {
+        background-color: var(--redacted-purple);
+        color: var(--redacted-purple);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .redacted-green {
+        background-color: var(--redacted-dark-green);
+        color: var(--redacted-dark-green);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    .redacted-dark-red {
+        background-color: var(--redacted-dark-red);
+        color: var(--redacted-dark-red);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .redacted-crimson {
+        background-color: var(--redacted-crimson);
+        color: var(--redacted-crimson);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .redacted-dark-green {
+        background-color: var(--redacted-dark-green);
+        color: var(--redacted-dark-green);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .article-code {
+        font-family: monospace;
+        color: #cccccc;
+        font-weight: bold;
+    }
+    
+    ul, ol {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .note {
+        font-style: italic;
+        color: #aaaaaa;
+        margin: 10px 0;
+        padding-left: 15px;
+        border-left: 2px solid #666;
+    }
+    
+    .warning {
+        color: #ff6b6b;
+        font-weight: bold;
+        border: 1px solid #ff6b6b;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(255, 107, 107, 0.1);
+    }
+    
+    .highlight {
+        background-color: rgba(255, 255, 0, 0.2);
+        padding: 2px 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+
+    table th, table td {
+        text-align: left;
+        border: 1px solid var(--border-color);
+        padding: 8px;
+    }
+    
+    * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: default;
+    }
+    
+    input, textarea {
+        -webkit-user-select: auto !important;
+        -moz-user-select: auto !important;
+        -ms-user-select: auto !important;
+        user-select: auto !important;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning-bar">ACCESS TIER: CONFIDENTIAL - REDACTED COPY</div>
+        <div class="clearance-info" id="clearanceInfo">SECURITY CLEARANCE LEVEL: LOADING...</div>
+        
+        <div class="section">
+            <h1>CODE OF ETHICS</h1>
+            <p>The Code of Ethics (CoE) stands as a guide on how to behave ethically, both within the Foundation and outside. The CoE was devised by the Ethics Committee based on experience and common sense, and was approved by the <span class="redacted-red">[REDACTED]</span> on July 19, 1923. The CoE is expected to be followed by all Foundation personnel regardless of position. Failure to comply is punishable; the punishments are listed below in the Offense System (OFS).</p>
+            
+            <p>The codex (link below) serves as The Law of The Foundation. The Codex must be followed at all times by all personnel. Anyone caught breaking the Codex will face trial with the Tribunal Department, even including violations of the Code of Ethics.</p>
+            
+            <div class="note">The Code of Ethics is one of the most important Foundation documents. It outlines the conditions of the Ethics Committee as well as all relevant humanitarian rights and power establishments regarding D-Class Personnel and the safety of Foundation Personnel. Responsibility for amending this document is ultimately reserved only for members of the Ethics Committee, and may be granted through emergency powers publicly from the Board of Directors through the public, to which the document is always granted, or to be published by the Ethics Editor(+)</div>
+            
+            <p><span class="highlight">The Code of Ethics stands higher than any Foundation personnel, including the <span class="redacted-red">[REDACTED]</span> and The <span class="redacted-purple">[REDACTED]</span> - [if highly needed].</span> The Code of Ethics must be enforced, no matter what their rank or site. They should have no abusive council or an unethical site.</p>
+            
+            <p>The <span class="redacted-red">[REDACTED]</span> is a powerful council, but the Ethics Committee is the group that oversees the <span class="redacted-red">[REDACTED]</span> and ensures it is on the right path. It determines if high-ranking personnel commit unethical actions for punishment.</p>
+            
+            <p>All directors of a department or leadership/department supervisors [TFS-TFL] must enforce the CoE in their own department. If they fail to do so, they may be removed by Ethics or given a Class-A through D offense. For a director to be demoted for failing to enforce the CoE, it must be reviewed by a Vice Editor, Editor, and/or <span class="redacted-red">[REDACTED]</span>.</p>
+            
+            <div class="warning">
+                (<span class="redacted-green">[REDACTED]</span> is allowed to break the CoE and kill an <span class="redacted-red">[REDACTED]</span> or any high-ranking personnel if highly requested by the Committee or Vice Editors). They must have a reason for their target to be killed. <span class="redacted-red">[REDACTED]</span> can interfere to save the <span class="redacted-red">[REDACTED]</span> life if this is required by the Committee. This also includes <span class="redacted-red">[REDACTED]</span> being removed from the Council if they are killed. IF THE SITE IS GETTING REPORTS UP TO 6+, THE ETHICS COMMITTEE CAN TAKE OVER THE SITE DUE TO AN UNETHICAL CAUSE, AS LONG AS THEIR REASON IS MAJOR. THIS WILL ALSO BE A PUNISHMENT IF WARNING INCIDENTS INCLUDE:<br><br>
+                [DO NOT ABUSE THIS, VICE EDITOR+]
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Offense System</h2>
+            <p>(Designated "punishments" are subject to change at the consensus of the Committee).</p>
+            
+            <div class="classification">
+                <p><strong>Alpha:</strong> Class-A offenses result in a written warning.</p>
+                <p><strong>Bravo:</strong> Class-B offenses result in retraining on basics and a reteaching of the CoE.</p>
+                <p><strong>Charlie:</strong> Class-C offenses result in a demotion.</p>
+                <p><strong>Delta:</strong> Class-D offenses result in suspension from Foundation operations and activities (length is up to the Committee and the person's supervisor; this will essentially remove you from the game to give disciplinary notice of a warning).</p>
+                <p><strong>Echo:</strong> Class-E offenses result in exile either from the department or group. This will demote the person to D-Class for 3 or 5 days, and they must be retrained in a different department if provided.</p>
+                <p><strong>X-Ray:</strong> Class-X offenses will result in interrogation, death, permanent removal from the department, or possibly a permanent ban from the game. [Any action that does not result in a ban will permanently send the person to Class-D unless given a second chance by the authority of the <span class="redacted-red">[REDACTED]</span> or <span class="redacted-red">[REDACTED]</span> of the Ethics Committee.]</p>
+                
+                <p>(<span class="redacted-green">[REDACTED]</span> cannot kill people for no reason unless given orders from an Ethics Committee Vice Editor+ with authorization.)</p>
+                
+                <p>(If the Ethics Committee does not feel that the designated punishment is adequate for the severity of the code violation, they may discuss a harsher punishment with the personnel's superior or <span class="redacted-red">[REDACTED]</span>.)</p>
+            </div>
+
+            <div class="build-up">
+                <h3>Build-up of Offenses</h3>
+                <p>Offenses can build up. This is to prevent personnel from continuously breaking the <strong>CoE</strong> and getting away with only minor punishment. The buildup is as follows:</p>
+                
+                <ul>
+                    <li>If personnel receive <strong>three Class A offenses</strong>, they will be subject to a <strong>Class B offense</strong>.</li>
+                    <li>If personnel receive <strong>three Class B offenses</strong>, they will be subject to a <strong>Class C offense</strong>.</li>
+                    <li>If personnel receive <strong>two Class C offenses</strong>, they will be subject to a <strong>Class D offense</strong>.</li>
+                    <li>If personnel receive <strong>two Class D offenses</strong>, they will be subject to a <strong>Class E offense</strong>.</li>
+                    <li>If personnel receive <strong>two Class E offenses</strong>, they will be subject to a <strong>Class X offense</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTIONS 1-17 CONTENT -->
+        <div id="sectionsContainer"></div>
+
+        <div class="section">
+            <h2>[SECTION-17] CONCLUSION</h2>
+            
+            <div class="note">
+                <strong>Canon</strong><br>
+                CoE designed for use on Site-Alpha Maps (specifically Secure Containment Installation - 39 <strong>(CoE) - [SCP:F]</strong>
+            </div>
+            
+            <p>This document was written, designed, and devised by Editor: And Vice Editor:.</p>
+            
+            <h3>Property of:</h3>
+            <p>Abacromby9 Studios<br>
+            Contact: XGT - Gk11773399<br>
+            (XBOX GAMERTAG)</p>
+            
+            <p>Any changes or additions needed to the Code of Ethics are to be reported to the Ethics Committee. The Code of Ethics is always subject to change, so it's advised to check back and read it frequently (twice a week).</p>
+            
+            <h3>Departments that helped with Code of Ethics Conduct:</h3>
+            <ul>
+                <li>Internal Tribunal Department - ITD</li>
+                <li>Department of External Affairs - DEA</li>
+                <li>Manufacturing Department - MD</li>
+                <li>Recordkeeping and Information Security Administration (RAISA)</li>
+                <li>The Artificial Intelligence Applications Division (AIAD)</li>
+                <li>The Department of Tactical Theology - DoTT</li>
+                <li>The Telecommunications Monitoring Office (TMO)</li>
+                <li>The Department of Deletions - DoD</li>
+                <li>Division of Training and Development</li>
+                <li><span class="classified">[REDACTED]</span> - (<span class="classified">[REDACTED]</span>)</li>
+                <li><span class="classified">[REDACTED]</span> - (<span class="classified">[REDACTED]</span>)</li>
+                <li><span class="redacted-red">[REDACTED]</span> - (<span class="redacted-red">[REDACTED]</span>)</li>
+                <li><span class="redacted-purple">Secure Executive Administrative Department Office of The Administrator</span> - (<span class="redacted-purple">SEADOOTA</span>)</li>
+            </ul>
+            
+            <p>Remember to always behave ethically, stay safe, and make your stay worthwhile in the Foundation.</p>
+            <p>(If you have any questions, please ask any Ethics Committee personnel or your current superior.) P.S., <span class="redacted-purple">[REDACTED]</span> is the <span class="redacted-red">[REDACTED]</span>.</p>
+            
+            <div class="warning">
+                <strong>Any use of this document is restricted to Abacromby9 Studios and its subsidiaries. Any use that is not authorized will be given a DMCA Take Down Notice/Cease and Desist Demand pursuant to Title 17 United States Code § 501 - Copyright Act of 1976.</strong>
+            </div>
+            
+            <p>Date made: <span class="date-level0">█/█/1923</span><span class="date-level1" style="display:none;">██/██/1923</span><span class="date-level2-plus" style="display:none;">7/19/1923</span><br>
+            Date redesigned: 11-17-<span class="date-level0">██</span><span class="date-level1" style="display:none;">██</span><span class="date-level2-plus" style="display:none;">24</span><br>
+            Date last modified: 01/21/2026</p>
+        </div>
+    </div>
+
+    <script>
+        // Extract clearance from URL or parent window
+        function getClearanceLevel() {
+            const params = new URLSearchParams(window.location.search);
+            let clearance = params.get('clearance');
+            
+            if (clearance === null && window.parent !== window) {
+                try {
+                    clearance = window.parent.clearance;
+                } catch (e) {
+                    clearance = 0;
+                }
+            }
+            
+            return clearance !== null ? parseInt(clearance) : 0;
+        }
+
+        // Apply date redactions based on clearance
+        function applyDateRedactions(clearanceLevel) {
+            if (clearanceLevel === 0) {
+                // Show only the final modified date
+                document.querySelectorAll('.date-level0').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('.date-level1').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.date-level2-plus').forEach(el => el.style.display = 'none');
+            } else if (clearanceLevel === 1) {
+                // Show all dates with years visible, month/day redacted for non-2026
+                document.querySelectorAll('.date-level0').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.date-level1').forEach(el => el.style.display = 'inline');
+                document.querySelectorAll('.date-level2-plus').forEach(el => el.style.display = 'none');
+            } else {
+                // Level 2+ shows all dates
+                document.querySelectorAll('.date-level0').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.date-level1').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.date-level2-plus').forEach(el => el.style.display = 'inline');
+            }
+        }
+
+        // Apply content redactions
+        function applyContentRedactions(clearanceLevel) {
+            const redactionMap = {
+                0: { black: true, red: true, green: true, purple: true },
+                1: { black: true, red: true, green: true, purple: true },
+                2: { black: true, red: true, green: true, purple: true },
+                3: { black: true, red: true, green: false, purple: true },
+                4: { black: true, red: false, green: false, purple: true },
+                5: { black: false, red: false, green: false, purple: false }
+            };
+
+            const rules = redactionMap[clearanceLevel] || redactionMap[0];
+
+            // Apply redactions
+            if (!rules.black) {
+                // Level 5: Reveal all black redactions
+                document.querySelectorAll('.redacted-black').forEach(el => {
+                    el.style.backgroundColor = 'transparent';
+                    el.style.color = 'inherit';
+                });
+            }
+            if (!rules.red) {
+                // Level 4+: Reveal red redactions (Overseer Council, Alpha-1)
+                document.querySelectorAll('.redacted-red').forEach(el => {
+                    el.style.backgroundColor = 'transparent';
+                    el.style.color = 'inherit';
+                });
+            }
+            if (!rules.green) {
+                // Level 3+: Reveal green redactions (Omega-1, O-1)
+                document.querySelectorAll('.redacted-green').forEach(el => {
+                    el.style.backgroundColor = 'transparent';
+                    el.style.color = 'inherit';
+                });
+            }
+            if (!rules.purple) {
+                // Level 2+: Reveal purple redactions (ISD, Administrator)
+                document.querySelectorAll('.redacted-purple').forEach(el => {
+                    el.style.backgroundColor = 'transparent';
+                    el.style.color = 'inherit';
+                });
+            }
+        }
+
+        // Initialize on page load
+        function initialize() {
+            const clearance = getClearanceLevel();
+            document.getElementById('clearanceInfo').textContent = `SECURITY CLEARANCE LEVEL: ${clearance}`;
+            
+            applyDateRedactions(clearance);
+            applyContentRedactions(clearance);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initialize);
+        } else {
+            initialize();
+        }
+    </script>
+</body>
+</html>
