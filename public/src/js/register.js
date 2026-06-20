@@ -39,7 +39,7 @@ export const registerProcess = (val) => {
     } else {
       if (registerState == 1) {
         if (val == "y") {
-          appendNormal(`<hr><span class="redLabels">Registration Protocol initiated</span><br><span style="color:#98FB98">[✓] </span>Registration confirmed<br>Please enter your username as your identity in the Foundation's database<hr>`)
+          appendNormal(`<hr><span class="redLabels">Registration Protocol initiated</span><br><span style="color:#98FB98">[✓] </span>Registration confirmed<br>Please enter your username as your [...]
           registerState = 2
         } else if (val == "n") {
           appendNormal("Registration aborted, request for registration has been discarded")
@@ -64,7 +64,7 @@ export const registerProcess = (val) => {
             if (signInMethods.length) {
               cmdShow()
               registerState = 2.5
-              appendError('WE ALREADY HAVE AN USER WITH A CORRESPONDING EMAIL ADDRESS IN OUR DATABASE. PLEASE USE ANOTHER EMAIL OR TRY LOGGING IN<br><hr><small style="opacity:0.7">If you wish to login, enter "Quit" to exit the registration process. After that, enter "Login" to login yourself.</small>')
+              appendError('WE ALREADY HAVE AN USER WITH A CORRESPONDING EMAIL ADDRESS IN OUR DATABASE. PLEASE USE ANOTHER EMAIL OR TRY LOGGING IN<br><hr><small style="opacity:0.7">If you wish to l[...]
             } else {
               emailReg = val
               registerState = 3
@@ -77,7 +77,7 @@ export const registerProcess = (val) => {
             registerState = 2.5
           });
       } else if (registerState == 3) {
-        appendNormal("Please click and select your Foundation security clearance (Available Security Clearance Level is 0 - 5)<br><ul id='clearanceList' class='listClass'><li>Level 0 (For Official Use Only)</li><li>Level 1 (Confidential)</li><li>Level 2 (Restricted)</li><li>Level 3 (Secret)</li><li>Level 4 (Top Secret)</li><li style='color:red'>Level 5 (Thaumiel)</li></ul><hr><small style='opacity:0.7'>Foundation security clearances granted to personnel represent the highest level or type of information to which they can be granted access. </small>")
+        appendNormal("Please click and select your Foundation security clearance (Available Security Clearance Level is 0 - 5)<br><ul id='clearanceList' class='listClass'><li>Level 0 (For Official[...]
         $d.find("#clearanceList li").unbind('click').bind('click', function() {
           $(this).parent("#clearanceList").find("li").unbind("click") //disable all clicking
           $(this).parent("#clearanceList").attr("id", "") //remove the id so it won't cause error
@@ -90,26 +90,38 @@ export const registerProcess = (val) => {
           } else {
             clrReg = $(this).index()
             $d.append($(this).text())
-            appendNormal(`Foundation security clearance selected: <span class="highlight">Level ${$(this).index()}</span><br><br><hr>Please click and select your personnel classification<br><ul id='personnelList' class='listClass'><li>Class A (Deemed essential to Foundation strategic operations)</li><li>Class B (Deemed essential to local Foundation operations)</li><li>Class C (Personnel with direct access to most anomalies not deemed strictly hostile or dangerous)</li><li>Class D (expendable personnel used to handle extremely hazardous anomalies)</li><li>Class E (Provisional classification applied to field agents and containment personnel)</li></ul><hr><small style='opacity:0.7'>Classifications are assigned to personnel based on their proximity to potentially dangerous anomalous objects, entities, or phenomena. </small>`)
+            appendNormal(`Foundation security clearance selected: <span class="highlight">Level ${$(this).index()}</span><br><br><hr>Please click and select your personnel classification<br><ul id[...]
             personnellistClick()
           }
         });
       } else if (registerState == 4) {
         if (valCase.length < 101) {
           titleReg = valCase;
-          appendNormal("Please enter your working site<br><hr><small style='opacity:0.7'>The location where you work. (e.g. Site-103, Site-56)</small>")
+          appendNormal("Please enter your working site<br><hr><small style='opacity:0.7'>The location where you work. (e.g. Secure Containment Installation - 39)</small>")
           registerState = 5
         } else {
           appendError("INPUTTED STAFF TITLE TOO LONG, PLEASE CHOOSE ANOTHER ONE.")
           registerState = 4
         }
       } else if (registerState == 5) {
-        if (valCase.length < 101) {
-          siteReg = valCase;
-          appendNormal("Please now enter a password for your new account")
-          registerState = 6
+        // Validate site input - only accept "Secure Containment Installation - 39" or "Secure Containment Installation-39"
+        const validSites = [
+          "secure containment installation - 39",
+          "secure containment installation-39"
+        ];
+        const normalizedInput = valCase.toLowerCase().trim();
+        
+        if (validSites.includes(normalizedInput)) {
+          if (valCase.length < 101) {
+            siteReg = valCase;
+            appendNormal("Please now enter a password for your new account")
+            registerState = 6
+          } else {
+            appendError("INPUTTED WORKING SITE TOO LONG, PLEASE CHOOSE ANOTHER ONE.")
+            registerState = 5
+          }
         } else {
-          appendError("INPUTTED WORKING SITE TOO LONG, PLEASE CHOOSE ANOTHER ONE.")
+          appendError(`INVALID WORKING SITE. ONLY "Secure Containment Installation - 39" OR "Secure Containment Installation-39" ARE ACCEPTED.<br><hr><small style='opacity:0.7'>Please enter a valid working site and try again.</small>`)
           registerState = 5
         }
       } else if (registerState == 6) {
@@ -175,10 +187,10 @@ function registerUserWithInfo() {
         .catch(function(error) {
           cmdShow()
           if (error.code == "auth/invalid-email") {
-            appendError(`PLEASE ENTER A VALID EMAIL (The email you have entered: <span class="highlight">${emailReg}</span>)<br><hr> <small style="opacity:0.7">Please enter your email again or you can enter "Quit" to exit the registration process.</small>`)
+            appendError(`PLEASE ENTER A VALID EMAIL (The email you have entered: <span class="highlight">${emailReg}</span>)<br><hr> <small style="opacity:0.7">Please enter your email again or yo[...]
             registerState = 8
           } else if (error.code == "auth/email-already-in-use") {
-            appendError(`THE PROVIDED EMAIL IS ALREADY IN USE BY AN EXISTING USER (The email you have entered: <span class="highlight">${emailReg}</span>)<br><hr> <small style="opacity:0.7">Please enter your email again or you can enter "Quit" to exit the registration process.</small>`)
+            appendError(`THE PROVIDED EMAIL IS ALREADY IN USE BY AN EXISTING USER (The email you have entered: <span class="highlight">${emailReg}</span>)<br><hr> <small style="opacity:0.7">Pleas[...]
             registerState = 8
           } else {
             appendError(`${String(error).toUpperCase()}<br><hr> <small style="opacity:0.7">Please enter your password again or you can enter "Quit" to exit the registration process.</small>`)
@@ -198,12 +210,12 @@ function personnellistClick() {
     if (/^[A-E]$/i.test($(this).text().charAt(6))) {
       classReg = $(this).text().charAt(6)
       $d.append($(this).text())
-      appendNormal(`Personnel classification selected: <span class="highlight">${$(this).text()}</span><br><br><hr>Please now enter your staff title</span><hr><small style='opacity:0.7'>General occupational titles that are typically used in the Foundation. (e.g. Containment Specialist, Researcher)</small>`)
+      appendNormal(`Personnel classification selected: <span class="highlight">${$(this).text()}</span><br><br><hr>Please now enter your staff title</span><hr><small style='opacity:0.7'>General o[...]
       cmdShow()
       registerState = 4
     } else {
       appendError("ERROR OCCURED, PLEASE TRY AGAIN")
-      appendNormal(`Please click and select your personnel classifications<br><ul id='personnelList' class='listClass'><li>Class A (Deemed essential to Foundation strategic operations)</li><li>Class B (Deemed essential to local Foundation operations)</li><li>Class C (Personnel with direct access to most anomalies not deemed strictly hostile or dangerous)</li><li>Class D (expendable personnel used to handle extremely hazardous anomalies)</li><li>Class E (Provisional classification applied to field agents and containment personnel)</li></ul><hr><small style='opacity:0.7'>Classifications are assigned to personnel based on their proximity to potentially dangerous anomalous objects, entities, or phenomena. </small>`)
+      appendNormal(`Please click and select your personnel classifications<br><ul id='personnelList' class='listClass'><li>Class A (Deemed essential to Foundation strategic operations)</li><li>Cl[...]
       personnellistClick()
     }
   });
